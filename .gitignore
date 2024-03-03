@@ -1,0 +1,4 @@
+venv_insta
+.vscode
+staticfiles
+db.sqlite3

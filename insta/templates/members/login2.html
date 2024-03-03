@@ -1,0 +1,91 @@
+
+{% load static %}
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://colorlib.com/etc/regform/colorlib-regform-7/ -->
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <link rel="stylesheet" href="{% static 'Sign Up Form by Colorlib_files/material-design-iconic-font.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'Sign Up Form by Colorlib_files/style.css'%}">
+    <meta name="robots" content="noindex, follow">
+    <script type="text/javascript" async="" src="{% static 'Sign Up Form by Colorlib_files/analytics.js'%}"
+      nonce="e30dddda-c397-4d60-bdb9-838d70ca1ab0"></script>
+    <script defer="" referrerpolicy="origin" src="{% static 'Sign Up Form by Colorlib_files/s.js'%}"></script>
+    <script
+      nonce="e30dddda-c397-4d60-bdb9-838d70ca1ab0">try { (function (w, d) { !function (ct, cu, cv, cw) { ct[cv] = ct[cv] || {}; ct[cv].executed = []; ct.zaraz = { deferred: [], listeners: [] }; ct.zaraz.q = []; ct.zaraz._f = function (cx) { return async function () { var cy = Array.prototype.slice.call(arguments); ct.zaraz.q.push({ m: cx, a: cy }) } }; for (const cz of ["track", "set", "debug"]) ct.zaraz[cz] = ct.zaraz._f(cz); ct.zaraz.init = () => { var cA = cu.getElementsByTagName(cw)[0], cB = cu.createElement(cw), cC = cu.getElementsByTagName("title")[0]; cC && (ct[cv].t = cu.getElementsByTagName("title")[0].text); ct[cv].x = Math.random(); ct[cv].w = ct.screen.width; ct[cv].h = ct.screen.height; ct[cv].j = ct.innerHeight; ct[cv].e = ct.innerWidth; ct[cv].l = ct.location.href; ct[cv].r = cu.referrer; ct[cv].k = ct.screen.colorDepth; ct[cv].n = cu.characterSet; ct[cv].o = (new Date).getTimezoneOffset(); if (ct.dataLayer) for (const cG of Object.entries(Object.entries(dataLayer).reduce(((cH, cI) => ({ ...cH[1], ...cI[1] })), {}))) zaraz.set(cG[0], cG[1], { scope: "page" }); ct[cv].q = []; for (; ct.zaraz.q.length;) { const cJ = ct.zaraz.q.shift(); ct[cv].q.push(cJ) } cB.defer = !0; for (const cK of [localStorage, sessionStorage]) Object.keys(cK || {}).filter((cM => cM.startsWith("_zaraz_"))).forEach((cL => { try { ct[cv]["z_" + cL.slice(7)] = JSON.parse(cK.getItem(cL)) } catch { ct[cv]["z_" + cL.slice(7)] = cK.getItem(cL) } })); cB.referrerPolicy = "origin"; cB.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(ct[cv]))); cA.parentNode.insertBefore(cB, cA) };["complete", "interactive"].includes(cu.readyState) ? zaraz.init() : ct.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
+  </head>
+
+  <body>
+    <div class="main">
+      <section class="sign-in">
+        <div class="container">
+          <div class="signin-content">
+            <div class="signin-image">
+              <figure><img src="{% static 'Sign Up Form by Colorlib_files/signin-image.jpg'%}" alt="sing up image">
+              </figure>
+              <a href="https://colorlib.com/etc/regform/colorlib-regform-7/#" class="signup-image-link">Create an
+                account</a>
+            </div>
+            <div class="signin-form">
+              <h2 class="form-title">Sign up</h2>
+              <form method="POST" class="register-form" id="login-form">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                  <input type="text" name="username" id="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                  <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
+                  <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                </div>
+                <div class="form-group form-button">
+                  <input type="submit" name="signin" id="signin" class="form-submit" value="Log in">
+                </div>
+              </form>
+              <div class="social-login">
+                <span class="social-label">Or login with</span>
+                <ul class="socials">
+                  <li><a href="https://colorlib.com/etc/regform/colorlib-regform-7/#"><i
+                        class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                  <li><a href="https://colorlib.com/etc/regform/colorlib-regform-7/#"><i
+                        class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                  <li><a href="https://colorlib.com/etc/regform/colorlib-regform-7/#"><i
+                        class="display-flex-center zmdi zmdi-google"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="{% static 'Sign Up Form by Colorlib_files/jquery.min.js'%}"></script>
+    <script src="{% static 'Sign Up Form by Colorlib_files/main.js'%}"></script>
+
+    <script async="" src="{% static 'Sign Up Form by Colorlib_files/js'%}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-23581568-13');
+    </script>
+    <script defer="" src="{% static 'Sign Up Form by Colorlib_files/v84a3a4012de94ce1a686ba8c167c359c1696973893317'%}"
+      integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
+      data-cf-beacon="{&quot;rayId&quot;:&quot;85e3db251dec82d7&quot;,&quot;version&quot;:&quot;2024.2.4&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;}"
+      crossorigin="anonymous"></script>
+
+  </body>
+
+</html>

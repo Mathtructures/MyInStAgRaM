@@ -53,8 +53,9 @@ INSTALLED_APPS = [
     'user_activities',
     'logs',
     'direct',
-
 ]
+
+AUTH_USER_MODEL = 'members.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

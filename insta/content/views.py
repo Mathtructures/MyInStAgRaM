@@ -3,5 +3,9 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def index(request):
-    return render(request, 'content/index.html')
+def explore(request):
+    return render(request, 'content/explore.html')
+
+
+def reels(request):
+    return render(request, 'content/reels.html')
