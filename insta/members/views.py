@@ -25,10 +25,11 @@ def login_user(request):
             return render(request, 'members/login.html', response)
 
 
-def register_user(request):
+def sign_up_user(request):
     response = dict()
+    userAdded = False
     if request.method == 'GET':
-        return render(request, 'members/register.html')
+        return render(request, 'members/sign_up.html')
     elif request.method == 'POST':
         username = request.POST['username']
         firstname = request.POST['firstname']
@@ -40,10 +41,10 @@ def register_user(request):
         )
         response['message'] = isUnique['message']
         if not isUnique['is_unique']:
-            return render(request, 'members/register.html', response)
+            return render(request, 'members/sign_up.html', response)
         gender = request.POST['gender']
-        password = request.POST['pass']
-        password2 = request.POST['re_pass']
+        password = request.POST['password']
+        password2 = request.POST['password2']
         if password == password2:
             user = User.objects.create_user(
                 username=username,
@@ -54,11 +55,13 @@ def register_user(request):
                 gender=gender,
             )
             response['message'] = 'User added successfully'
+            userAdded = True
         else:
             response['message'] = 'Passwords miss-match!'
-
-    return render(request, 'members/register.html', response)
+    if userAdded:
+        return render(request, 'members/login.html', response)
+    return render(request, 'members/sign_up.html', response)
 
 
 def profile(request):
-    return redirect('register', response)
+    return render(request, 'members/profile.html')

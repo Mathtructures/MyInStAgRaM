@@ -4,6 +4,9 @@ from django.db import models
 from .managers import CustomUserManager
 
 
+imgDire = './media/img'
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=30, unique=True)
     email = models.EmailField(unique=True)
@@ -31,3 +34,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} == as ==> @{self.username}"
+
+
+class Profile(models.Model):
+    profilePic = models.ImageField(
+        'pic', upload_to=imgDire, height_field=None, width_field=None, max_length=None)
+    title = models.CharField('Full Name', max_length=60, blank=False)
+    about = models.TextField('About...', max_length=200, blank=True)
+    profID = models.CharField('My ID', max_length=50, blank=False, unique=True)
+    followers = models.ManyToManyField(User, verbose_name='followers')

@@ -1,0 +1,83 @@
+{% load static %}
+
+<div class="sign_up">
+    <div class="content">
+        <div class="log-on border_insc">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Instagram logo">
+                <p>Sign up to see photos and videos from your friends.</p>
+                <button class="btn log_fac">
+                    <a href="#">
+                        <img src="{% static 'images/facebook_white.png' %}" alt="facebook icon">
+                        Log in with Facebook
+                    </a>
+                </button>
+                <div class="seperator">
+                    <span class="ligne"></span>
+                    <span class="ou">OR</span>
+                    <span class="ligne"></span>
+                </div>
+
+            </div>
+            <form action="{% url 'sign_up' %}" method="POST">
+                {% csrf_token %}
+                <div>
+                    <input type="text" name="firstname" id="firstname" placeholder="First Name">
+                </div>
+                <div>
+                    <input type="text" name="lastname" id="lastname" placeholder="Last Name">
+                </div>
+                <div>
+                    <input type="email" name="email" id="emai" placeholder="Email Address">
+                </div>
+                <div>
+                    <input type="text" name="username" id="username" placeholder="Username">
+                </div>
+                <div>
+                    <input type="password" name="password" id="password1" placeholder="Password">
+                </div>
+                <div>
+                    <input type="password" name="password2" id="password2" placeholder="Re-type Password">
+                </div>
+                <div>
+
+                    <select name="gender">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+                <div class="info">
+                    <p>
+                        People who use our service may have uploaded your contact information to Instagram.
+                        <a href="#">Learn more</a>
+                    </p>
+                    <p>
+                        By signing up, you agree to our
+                        <a href="#">Terms, Privacy Policy and Cookies Policy.</a>
+                    </p>
+                </div>
+                <input type="submit" label="Sign Up" class="button log_btn">
+
+                {% if message %}
+                <h5>
+                  {{ message }}
+                </h5>
+                {% endif %}
+                </a>
+            </form>
+        </div>
+        <div class="sing-in border_insc">
+            <p>
+                Have an account?
+                <a href="{% url 'login' %}">Log in</a>
+            </p>
+        </div>
+        <div class="download">
+            <p>Get the app.</p>
+            <div>
+                <img src="{% static 'images/google_play_icon.png' %}" alt="download app from google play">
+                <img src="{% static 'images/microsoft-icon.png' %}" alt="download app from microsoft">
+            </div>
+        </div>
+    </div>
+</div>

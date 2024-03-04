@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def messages(request):
-    pass
+    return render(request,'direct/messages.html')

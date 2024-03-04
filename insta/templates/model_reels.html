@@ -1,0 +1,69 @@
+{% load static %}
+<div class="reel" id="video_play">
+    <div class="video">
+        <video src="{% static 'video/video1.mp4' %}" autoplay="" loop="">
+        </video>
+        <div class="content">
+            <div class="sound">
+                <img class="volume-up" src="{% static 'images/volume-up.png' %}">
+                <img class="volume-mute" src="{% static 'images/volume-mute.png' %}">
+            </div>
+            <div class="play">
+                <img src="{% static 'images/play-button-arrowhead.png' %}">
+            </div>
+            <div class="info">
+                <div class="profile">
+                    <h4><a href="#">
+                            <img src="{% static 'images/profile_img.jpg' %}">
+                            zineb
+                        </a></h4>
+                    <span>.</span>
+                    <button class="follow_text">Follow</button>
+                </div>
+                <div class="desc">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Officiis... <span
+                            class="show_text">more</span>
+                    </p>
+                    <div class="more">
+                        <div class="music">
+                            <img src="{% static 'images/music.png' %}">
+                            <span>nameOfMusic</span>
+                        </div>
+                        <div class="position">
+                            <img src="{% static 'images/map.png' %}">
+                            <span>casablanca</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="likes">
+        <div class="like">
+            <img class="not_loved" src="{% static 'images/love.png' %}">
+            <img class="loved" src="{% static 'images/heart.png' %}">
+            <p> 55.9K</p>
+        </div>
+        <div class="messsage">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#message_modal">
+                <img src="{% static 'images/bubble-chat.png' %}">
+                <p class="m-0">555</p>
+            </button>
+        </div>
+        <div class="send">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#send_message_modal">
+                <img src="{% static 'images/send.png' %}">
+            </button>
+        </div>
+        <div class="save not_saved">
+            <img class="hide saved" src="{% static 'images/save_black.png' %}">
+            <img class="not_saved" src="{% static 'images/save-instagram.png' %}">
+        </div>
+        <div class="more">
+            <img src="{% static 'images/show_more.png' %}">
+        </div>
+        <div class="profile">
+            <img src="{% static 'images/profile_img.jpg' %}">
+        </div>
+    </div>
+</div>
