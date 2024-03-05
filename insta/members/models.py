@@ -42,4 +42,4 @@ class Profile(models.Model):
     title = models.CharField('Full Name', max_length=60, blank=False)
     about = models.TextField('About...', max_length=200, blank=True)
     profID = models.CharField('My ID', max_length=50, blank=False, unique=True)
-    followers = models.ManyToManyField(User, verbose_name='followers')
+    followers = models.ManyToManyField(User, verbose_name='followers',related_name='followers')

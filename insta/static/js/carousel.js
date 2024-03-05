@@ -16,18 +16,18 @@ const image_profile = [
     ['https://i.ibb.co/4M3W996/account14.jpg','loy'],
     ['https://i.ibb.co/Fzpg5yd/account15.jpg','loy'],
 ]
-const story_container = document.querySelector('.owl-carousel.items');
-if(story_container){
-    for (var i = 0; i < image_profile.length; i++) {
-        const parentDiv = document.createElement('div');
-        parentDiv.classList.add("item_s");
-        parentDiv.innerHTML = `
-            <img src="${image_profile[i][0]}">
-            <p>${image_profile[i][1]}</p>
-            `;
-        story_container.appendChild(parentDiv);
-    }
-}
+// const story_container = document.querySelector('.owl-carousel.items');
+// if(story_container){
+//     for (var i = 0; i < image_profile.length; i++) {
+//         const parentDiv = document.createElement('div');
+//         parentDiv.classList.add("item_s");
+//         parentDiv.innerHTML = `
+//             <img src="${image_profile[i][0]}">
+//             <p>${image_profile[i][1]}</p>
+//             `;
+//         story_container.appendChild(parentDiv);
+//     }
+// }
 
 
 $(document).ready(function(){
