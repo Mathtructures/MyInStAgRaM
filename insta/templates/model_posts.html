@@ -1,10 +1,7 @@
 {% load static %}
-{% for i in posts %}
-{{posts.i.postMedia}}
-
-{% endfor %}
 
 {% for post in posts %}
+
 <div class="post">
     <div class="info">
         <div class="person">
@@ -18,26 +15,22 @@
         </div>
     </div>
     <div class="image">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            </ol>
+        <div id="carouselExample{{post.post_i.pk}}" class="carousel slide">
             <div class="carousel-inner">
+                {% for pic in post.postMedia.pics %}
                 <div class="carousel-item active">
-                   {% for pic in post.postMedia.pics %}
-                    <img class="d-block w-100" src="{% get_media_prefix %}{{ pic.fields.pic }}">
-                    {% endfor %}
+                    <img src="{% get_media_prefix %}{{pic.fields.pic}}" class="d-block w-100" alt="...">
                 </div>
-
+                {% endfor %}
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{post.post_i.pk}}" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample{{post.post_i.pk}}" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
     <div class="desc">
@@ -64,7 +57,7 @@
             </div>
         </div>
         <div class="liked">
-            <a class="bold" href="#">{{ postLikes|length }} Likes</a>
+            <a class="bold" href="#">{{ post.postLikes|length }} Likes</a>
         </div>
         <div class="post_desc">
             <p>
