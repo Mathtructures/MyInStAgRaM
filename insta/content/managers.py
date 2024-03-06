@@ -1,11 +1,28 @@
 from django.db import models
 from django.core import serializers
-from django.apps import apps as app
+from django.apps import apps
 from user_activities.models import Comment, Like
 import json
 
 
 class PostManager(models.Manager):
+    def load_models(self):
+        if apps.ready:
+            self.User = apps.get_model('members', 'User')
+            self.Media = apps.get_model('content', 'Media')
+            self.Picture = apps.get_model('content', 'Picture')
+            self.Video = apps.get_model('content', 'Video')
+
+    def add_post(self,userID,caption,mediaID):
+        self.load_models()
+        post = self.model.objects.create(
+            author=self.User.objects.get(pk=userID),
+            caption=caption,
+            media=self.Media.objects.get(pk=mediaID),
+        )
+        post.save()
+        return 0
+
     def get_dict(self, postID):
         post = self.model.objects.get(pk=postID)
         post = serializers.serialize('json', [post])
@@ -31,16 +48,14 @@ class PostManager(models.Manager):
         return commentsInfo
 
     def get_post_media(self, postID):
+        self.load_models()
         mediaInfo = dict()
-        Media = app.get_model('content', 'Media')
-        Picture = app.get_model('content', 'Picture')
-        Video = app.get_model('content', 'Video')
-        mediaID = Media.objects.get(posts=postID).id
+        mediaID = self.Media.objects.get(posts=postID).id
         post = self.model.objects.get(pk=postID)
         mediaInfo['pics'] = json.loads(serializers.serialize(
-            'json', Picture.objects.filter(media=mediaID)))
+            'json', self.Picture.objects.filter(media=mediaID)))
         mediaInfo['vids'] = json.loads(serializers.serialize(
-            'json', Video.objects.filter(media=mediaID)))
+            'json', self.Video.objects.filter(media=mediaID)))
         return mediaInfo
 
 

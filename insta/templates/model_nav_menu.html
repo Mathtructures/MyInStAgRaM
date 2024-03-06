@@ -92,9 +92,12 @@
                         <li><a class="dropdown-item bold_border" href="#">
                                 <span>Switch accounts</span>
                             </a></li>
-                        <li><a class="dropdown-item" href="{% url 'login' %}">
+                            {% if user.is_authenticated %}
+                            <li>
+                            <a class="dropdown-item" href="{% url 'logout' %}">
                                 <span>Log out</span>
                             </a></li>
+                            {% endif %}
                     </ul>
                 </div>
                 <!--  -->

@@ -48,11 +48,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # MyApps
+    'api',
     'content',
     'members',
     'user_activities',
     'logs',
     'direct',
+    
 ]
 
 AUTH_USER_MODEL = 'members.User'

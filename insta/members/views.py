@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import json
-from .models import User
-from django.contrib.auth import authenticate,login
+from .models import User, Profile
+from django.contrib.auth import authenticate, login,logout
 
 
 def index(request):
@@ -19,11 +19,14 @@ def login_user(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, 'members/profile.html', response)
+            return redirect('profile')
         else:
             response['message'] = 'Invalid credentials!'
             return render(request, 'members/login.html', response)
 
+def logout_user(request):
+    logout(request)
+    return redirect('login')
 
 def sign_up_user(request):
     response = dict()
@@ -64,4 +67,13 @@ def sign_up_user(request):
 
 
 def profile(request):
-    return render(request, 'members/profile.html')
+    user = request.user
+    if user.is_authenticated:
+        userID = request.user.id
+        data = Profile.objects.get_all_profile_info(userID)
+        return render(request, 'members/profile.html', data)
+    else:
+        data={
+            'message':'You need to login first'
+        }
+        return render(request, 'members/login.html', data)

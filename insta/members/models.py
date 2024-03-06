@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.db import models
-from .managers import CustomUserManager
+from .managers import CustomUserManager, ProfileManager
 
 
 imgDire = './media/img'
@@ -37,9 +37,14 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Profile(models.Model):
+    user = models.OneToOneField(User, verbose_name="user", default=None,
+                                related_name='profile', on_delete=models.CASCADE)
     profilePic = models.ImageField(
-        'pic', upload_to=imgDire, height_field=None, width_field=None, max_length=None)
-    title = models.CharField('Full Name', max_length=60, blank=False)
+        'pic', null=True, blank=True, upload_to=imgDire, height_field=None, width_field=None, max_length=None)
     about = models.TextField('About...', max_length=200, blank=True)
-    profID = models.CharField('My ID', max_length=50, blank=False, unique=True)
-    followers = models.ManyToManyField(User, verbose_name='followers',related_name='followers')
+    followers = models.ManyToManyField(
+        User, verbose_name="followers", related_name='followers')
+    objects = ProfileManager()
+
+    def __str__(self):
+        return self.user.username
